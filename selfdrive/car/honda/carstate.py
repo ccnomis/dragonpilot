@@ -216,10 +216,10 @@ class CarState(CarStateBase):
     ret.espDisabled = cp.vl["VSA_STATUS"]['ESP_DISABLED'] != 0
 
     speed_factor = SPEED_FACTOR[self.CP.carFingerprint]
-    ret.wheelSpeeds.fl = cp.vl["WHEEL_SPEEDS"]['WHEEL_SPEED_FL'] * CV.KPH_TO_MS * speed_factor
-    ret.wheelSpeeds.fr = cp.vl["WHEEL_SPEEDS"]['WHEEL_SPEED_FR'] * CV.KPH_TO_MS * speed_factor
-    ret.wheelSpeeds.rl = cp.vl["WHEEL_SPEEDS"]['WHEEL_SPEED_RL'] * CV.KPH_TO_MS * speed_factor
-    ret.wheelSpeeds.rr = cp.vl["WHEEL_SPEEDS"]['WHEEL_SPEED_RR'] * CV.KPH_TO_MS * speed_factor
+    ret.wheelSpeeds.fl = cp.vl["ENGINE_DATA"]['WHEEL_SPEED_FL'] * CV.KPH_TO_MS * speed_factor
+    ret.wheelSpeeds.fr = cp.vl["ENGINE_DATA"]['WHEEL_SPEED_FR'] * CV.KPH_TO_MS * speed_factor
+    ret.wheelSpeeds.rl = cp.vl["ENGINE_DATA"]['WHEEL_SPEED_RL'] * CV.KPH_TO_MS * speed_factor
+    ret.wheelSpeeds.rr = cp.vl["ENGINE_DATA"]['WHEEL_SPEED_RR'] * CV.KPH_TO_MS * speed_factor
     v_wheel = (ret.wheelSpeeds.fl + ret.wheelSpeeds.fr + ret.wheelSpeeds.rl + ret.wheelSpeeds.rr)/4.
 
     # blend in transmission speed at low speed, since it has more low speed accuracy
