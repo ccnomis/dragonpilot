@@ -280,6 +280,36 @@ class CarInterface(CarInterfaceBase):
       ret.longitudinalTuning.kiBP = [0., 35.]
       ret.longitudinalTuning.kiV = [0.18, 0.12]
 
+    elif candidate == CAR.BYD_TANG:
+      stop_and_go = False
+      ret.safetyParam = 1  # Accord and CRV 5G use an alternate user brake msg
+      ret.mass = 1667. + STD_CARGO_KG  # mean of 4 models in kg
+      ret.wheelbase = 2.66
+      ret.centerToFront = ret.wheelbase * 0.41
+      ret.steerRatio = 16.0  # 12.3 is spec end-to-end
+      ret.lateralParams.torqueBP, ret.lateralParams.torqueV = [[0, 3840], [0, 3840]]  # TODO: determine if there is a dead zone at the top end
+      tire_stiffness_factor = 0.677
+      ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.68], [0.26]]
+      ret.longitudinalTuning.kpBP = [0., 5., 35.]
+      ret.longitudinalTuning.kpV = [1.2, 0.8, 0.5]
+      ret.longitudinalTuning.kiBP = [0., 35.]
+      ret.longitudinalTuning.kiV = [0.18, 0.12]
+
+    elif candidate == CAR.BYD_QIN:
+      stop_and_go = False
+      ret.safetyParam = 1  # Accord and CRV 5G use an alternate user brake msg
+      ret.mass = 1667. + STD_CARGO_KG  # mean of 4 models in kg
+      ret.wheelbase = 2.66
+      ret.centerToFront = ret.wheelbase * 0.41
+      ret.steerRatio = 16.0  # 12.3 is spec end-to-end
+      ret.lateralParams.torqueBP, ret.lateralParams.torqueV = [[0, 3840], [0, 3840]]  # TODO: determine if there is a dead zone at the top end
+      tire_stiffness_factor = 0.677
+      ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.68], [0.26]]
+      ret.longitudinalTuning.kpBP = [0., 5., 35.]
+      ret.longitudinalTuning.kpV = [1.2, 0.8, 0.5]
+      ret.longitudinalTuning.kiBP = [0., 35.]
+      ret.longitudinalTuning.kiV = [0.18, 0.12]
+
     elif candidate == CAR.FIT:
       stop_and_go = False
       ret.mass = 2644. * CV.LB_TO_KG + STD_CARGO_KG
