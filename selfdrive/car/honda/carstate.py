@@ -23,40 +23,39 @@ def get_can_signals(CP):
   # this function generates lists for signal, messages and initial values
   signals = [
       ("XMISSION_SPEED", "ENGINE_DATA", 0),
-      ("WHEEL_SPEED_FL", "WHEEL_SPEEDS", 0),
-      ("WHEEL_SPEED_FR", "WHEEL_SPEEDS", 0),
-      ("WHEEL_SPEED_RL", "WHEEL_SPEEDS", 0),
-      ("WHEEL_SPEED_RR", "WHEEL_SPEEDS", 0),
+      ("WHEEL_SPEED_FL", "ENGINE_DATA", 0),
+      ("WHEEL_SPEED_FR", "ENGINE_DATA", 0),
+      ("WHEEL_SPEED_RL", "ENGINE_DATA", 0),
+      ("WHEEL_SPEED_RR", "ENGINE_DATA", 0),
       ("STEER_ANGLE", "STEERING_SENSORS", 0),
       ("STEER_ANGLE_RATE", "STEERING_SENSORS", 0),
-      ("MOTOR_TORQUE", "STEER_MOTOR_TORQUE", 0),
-      ("STEER_TORQUE_SENSOR", "STEER_STATUS", 0),
-      ("LEFT_BLINKER", "SCM_FEEDBACK", 0),
-      ("RIGHT_BLINKER", "SCM_FEEDBACK", 0),
+      #("MOTOR_TORQUE", "STEER_MOTOR_TORQUE", 0),
+      #("STEER_TORQUE_SENSOR", "STEER_STATUS", 0),
+      #("LEFT_BLINKER", "SCM_FEEDBACK", 0),
+      #("RIGHT_BLINKER", "SCM_FEEDBACK", 0),
       ("GEAR", "GEARBOX", 0),
-      ("SEATBELT_DRIVER_LAMP", "SEATBELT_STATUS", 1),
+      #("SEATBELT_DRIVER_LAMP", "SEATBELT_STATUS", 1),
       ("SEATBELT_DRIVER_LATCHED", "SEATBELT_STATUS", 0),
-      ("BRAKE_PRESSED", "POWERTRAIN_DATA", 0),
-      ("BRAKE_SWITCH", "POWERTRAIN_DATA", 0),
-      ("CRUISE_BUTTONS", "SCM_BUTTONS", 0),
-      ("ESP_DISABLED", "VSA_STATUS", 1),
-      ("USER_BRAKE", "VSA_STATUS", 0),
-      ("BRAKE_HOLD_ACTIVE", "VSA_STATUS", 0),
-      ("STEER_STATUS", "STEER_STATUS", 5),
+      #("BRAKE_PRESSED", "POWERTRAIN_DATA", 0),
+      #("BRAKE_SWITCH", "POWERTRAIN_DATA", 0),
+      #("CRUISE_BUTTONS", "SCM_BUTTONS", 0),
+      #("ESP_DISABLED", "VSA_STATUS", 1),
+      #("USER_BRAKE", "VSA_STATUS", 0),
+      #("BRAKE_HOLD_ACTIVE", "VSA_STATUS", 0),
+      #("STEER_STATUS", "STEER_STATUS", 5),
       ("GEAR_SHIFTER", "GEARBOX", 0),
-      ("PEDAL_GAS", "POWERTRAIN_DATA", 0),
-      ("CRUISE_SETTING", "SCM_BUTTONS", 0),
-      ("ACC_STATUS", "POWERTRAIN_DATA", 0),
+      #("PEDAL_GAS", "POWERTRAIN_DATA", 0),
+      #("CRUISE_SETTING", "SCM_BUTTONS", 0),
+      #("ACC_STATUS", "POWERTRAIN_DATA", 0),
   ]
 
   checks = [
       ("ENGINE_DATA", 100),
-      ("WHEEL_SPEEDS", 50),
       ("STEERING_SENSORS", 100),
       ("SEATBELT_STATUS", 10),
-      ("CRUISE", 10),
+      #("CRUISE", 10),
       ("POWERTRAIN_DATA", 100),
-      ("VSA_STATUS", 50),
+      #("VSA_STATUS", 50),
   ]
 
   if CP.carFingerprint == CAR.ODYSSEY_CHN:
@@ -346,8 +345,8 @@ class CarState(CarStateBase):
   def get_can_parser(CP):
     signals, checks = get_can_signals(CP)
     bus_pt = 1 if CP.isPandaBlack and CP.carFingerprint in HONDA_BOSCH else 0
-    #return CANParser(DBC[CP.carFingerprint]['pt'], signals, checks, bus_pt)
-    return None
+    return CANParser(DBC[CP.carFingerprint]['pt'], signals, checks, bus_pt)
+    #return None
 
   @staticmethod
   def get_cam_can_parser(CP):
@@ -372,8 +371,8 @@ class CarState(CarStateBase):
       checks = [(0x194, 100)]
 
     bus_cam = 1 if CP.carFingerprint in HONDA_BOSCH and not CP.isPandaBlack else 2
-    #return CANParser(DBC[CP.carFingerprint]['pt'], signals, checks, bus_cam)
-    return None
+    return CANParser(DBC[CP.carFingerprint]['pt'], signals, checks, bus_cam)
+    #return None
 
   @staticmethod
   def get_body_can_parser(CP):
