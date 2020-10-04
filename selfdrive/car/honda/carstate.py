@@ -247,8 +247,8 @@ class CarState(CarStateBase):
 #        else:
 #          self.lkMode = True
      #self.lkMode = False
-     self.cruise_setting = 0
-     self.cruise_buttons = 0
+     #self.cruise_setting = 0
+     #self.cruise_buttons = 0
 
 #    self.cruise_setting = cp.vl["SCM_BUTTONS"]['CRUISE_SETTING']
 #    self.cruise_buttons = cp.vl["SCM_BUTTONS"]['CRUISE_BUTTONS']
