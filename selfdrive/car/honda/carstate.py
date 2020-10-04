@@ -246,7 +246,7 @@ class CarState(CarStateBase):
 #          self.lkMode = False
 #        else:
 #          self.lkMode = True
-     self.lkMode = False
+     #self.lkMode = False
      self.cruise_setting = 0
      self.cruise_buttons = 0
 
