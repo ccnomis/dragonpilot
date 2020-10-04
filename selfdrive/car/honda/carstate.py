@@ -58,16 +58,16 @@ def get_can_signals(CP):
       #("VSA_STATUS", 50),
   ]
 
-  if CP.carFingerprint == CAR.ODYSSEY_CHN:
-    checks += [
-      ("SCM_FEEDBACK", 25),
-      ("SCM_BUTTONS", 50),
-    ]
-  else:
-    checks += [
-      ("SCM_FEEDBACK", 10),
-      ("SCM_BUTTONS", 25),
-    ]
+#  if CP.carFingerprint == CAR.ODYSSEY_CHN:
+#    checks += [
+#      ("SCM_FEEDBACK", 25),
+#      ("SCM_BUTTONS", 50),
+#    ]
+#  else:
+#    checks += [
+#      ("SCM_FEEDBACK", 10),
+#      ("SCM_BUTTONS", 25),
+#    ]
 
   if CP.carFingerprint in (CAR.CRV_HYBRID, CAR.CIVIC_BOSCH_DIESEL):
     checks += [
@@ -89,6 +89,8 @@ def get_can_signals(CP):
                 ("EPB_STATE", "EPB_STATUS", 0),
                 ("CRUISE_SPEED", "ACC_HUD", 0)]
     checks += [("GAS_PEDAL_2", 100)]
+  elif CP.carFingerprint in (CAR.BYD_TANG, CAR.BYD_QIN):
+    NOCHANGE = 0
   else:
     # Nidec signals.
     signals += [("BRAKE_ERROR_1", "STANDSTILL", 1),
@@ -109,6 +111,8 @@ def get_can_signals(CP):
   elif CP.carFingerprint in [CAR.HRV, CAR.JADE]:
     signals += [("DRIVERS_DOOR_OPEN", "SCM_BUTTONS", 1),
                 ("WHEELS_MOVING", "STANDSTILL", 1)]
+  elif CP.carFingerprint in (CAR.BYD_TANG, CAR.BYD_QIN):
+    NOCHANGE = 0
   else:
     signals += [("DOOR_OPEN_FL", "DOORS_STATUS", 1),
                 ("DOOR_OPEN_FR", "DOORS_STATUS", 1),
