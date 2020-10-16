@@ -100,7 +100,7 @@ BO_ 860 GEAR2_CONTROL: 8 BDY
  SG_ GEAR2 : 15|8@0+ (1,0) [0|255] "" EON
 BO_ 665 STEERING_KEY: 8 EPS
  SG_ STEER_KEY : 20|4@1- (1,0) [0|255] "" EON
-VAL_ 530 GEAR 4 "D" 3 "N" 2 "R" 1 "P" ;
+VAL_ 530 GEAR_SHIFTER 4 "D" 3 "N" 2 "R" 1 "P" ;
 VAL_ 530 BREAK_P2 8 "release" 12 "press" ;
 VAL_ 530 BREAK_P4 4 "release" 0 "press" ;
 VAL_ 860 GEAR2 4 "D" 3 "N" 2 "R" 1 "P" ;

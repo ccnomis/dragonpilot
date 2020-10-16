@@ -104,7 +104,7 @@ class CarState(CarStateBase):
     ret.standstill = False
     ret.doorOpen = any([cp.vl["DOORS_STATUS"]['DOOR_OPEN_FL'], cp.vl["DOORS_STATUS"]['DOOR_OPEN_FR'],
                           cp.vl["DOORS_STATUS"]['DOOR_OPEN_RL'], cp.vl["DOORS_STATUS"]['DOOR_OPEN_RR']])
-    ret.seatbeltUnlatched = bool(not cp.vl["SEATBELT_STATUS"]['SEATBELT_DRIVER_LATCHED'])
+    ret.seatbeltUnlatched = bool(not cp.vl["DOORS_STATUS"]['SEATBELT_DRIVER_LATCHED'])
 
    # steer_status = self.steer_status_values[cp.vl["STEER_STATUS"]['STEER_STATUS']]
     steer_status = 'NORMAL'
@@ -169,7 +169,7 @@ class CarState(CarStateBase):
   @staticmethod
   def get_cam_can_parser(CP):
     signals = []
-
+    checks = []
 
     # all hondas except CRV, RDX and 2019 Odyssey@China use 0xe4 for steering
 

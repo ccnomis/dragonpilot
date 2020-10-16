@@ -78,10 +78,7 @@ class CarInterface(CarInterfaceBase):
     self.last_enable_pressed = 0
     self.last_enable_sent = 0
 
-    if self.CS.CP.carFingerprint == CAR.ACURA_ILX:
-      self.compute_gb = get_compute_gb_acura()
-    else:
-      self.compute_gb = compute_gb_byd
+    self.compute_gb = compute_gb_byd
 
   @staticmethod
   def compute_gb(accel, speed): # pylint: disable=method-hidden
