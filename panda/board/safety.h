@@ -15,6 +15,7 @@
 #include "safety/safety_nissan.h"
 #include "safety/safety_volkswagen.h"
 #include "safety/safety_elm327.h"
+#include "safety/safety_byd.h"
 
 // from cereal.car.CarParams.SafetyModel
 #define SAFETY_SILENT 0U
@@ -39,6 +40,7 @@
 #define SAFETY_SUBARU_LEGACY 22U
 #define SAFETY_HYUNDAI_LEGACY 23U
 #define SAFETY_HYUNDAI_COMMUNITY 24U
+#define SAFETY_BYD 25U
 
 uint16_t current_safety_mode = SAFETY_SILENT;
 const safety_hooks *current_hooks = &nooutput_hooks;
