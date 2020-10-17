@@ -32,15 +32,16 @@ class RadarInterface(RadarInterfaceBase):
     if self.radar_off_can:
       return super().update(None)
 
-    vls = self.rcp.update_strings(can_strings)
-    self.updated_messages.update(vls)
+    #vls = self.rcp.update_strings(can_strings)
+    #self.updated_messages.update(vls)
 
-    if self.trigger_msg not in self.updated_messages:
-      return None
+    #if self.trigger_msg not in self.updated_messages:
+    #  return None
 
-    rr = self._update(self.updated_messages)
-    self.updated_messages.clear()
-    return rr
+    #rr = self._update(self.updated_messages)
+    #self.updated_messages.clear()
+    #return rr
+    return None
 
   def _update(self, updated_messages):
     ret = car.RadarData.new_message()
