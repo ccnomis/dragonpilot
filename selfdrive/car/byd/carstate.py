@@ -33,7 +33,7 @@ def get_can_signals(CP):
 #      ("STEER_TORQUE_SENSOR", "STEER_STATUS", 0),
 #      ("LEFT_BLINKER", "SCM_FEEDBACK", 0),
 #      ("RIGHT_BLINKER", "SCM_FEEDBACK", 0),
-      ("GEAR", "GEARBOX", 0),
+#      ("GEAR", "GEARBOX", 0),
     #  ("SEATBELT_DRIVER_LAMP", "SEATBELT_STATUS", 1),
       ("SEATBELT_DRIVER_LATCHED", "DOORS_STATUS", 0),
 #      ("BRAKE_PRESSED", "POWERTRAIN_DATA", 0),
@@ -43,7 +43,8 @@ def get_can_signals(CP):
 #      ("USER_BRAKE", "VSA_STATUS", 0),
 #      ("BRAKE_HOLD_ACTIVE", "VSA_STATUS", 0),
 #      ("STEER_STATUS", "STEER_STATUS", 5),
-#      ("GEAR_SHIFTER", "GEARBOX", 0),
+      ("GEAR_SHIFTER", "GEARBOX", 0),
+      ("GAS_P1", "GAS_POSITION", 0),
 #      ("PEDAL_GAS", "POWERTRAIN_DATA", 0),
 #      ("CRUISE_SETTING", "SCM_BUTTONS", 0),
 #      ("ACC_STATUS", "POWERTRAIN_DATA", 0),
@@ -64,7 +65,8 @@ def get_can_signals(CP):
   signals += [("DOOR_OPEN_FL", "DOORS_STATUS", 1),
                 ("DOOR_OPEN_FR", "DOORS_STATUS", 1),
                 ("DOOR_OPEN_RL", "DOORS_STATUS", 1),
-                ("DOOR_OPEN_RR", "DOORS_STATUS", 1)]
+                ("DOOR_OPEN_RR", "DOORS_STATUS", 1),
+                ("BRAKE_PRESSED", "DOORS_STATUS", 1)]
   checks += [("DOORS_STATUS", 3)]
 
 
@@ -140,6 +142,9 @@ class CarState(CarStateBase):
 
     self.cruise_setting = cp.vl["CRUISE"]['SET_ME']
     self.cruise_buttons = cp.vl["CRUISE"]['SET_ME']
+
+    self.brake_switch = cp.vl["DOORS_STATUS"]['BRAKE_PRESSED'] != 0
+
 
 #    ret.leftBlinker = cp.vl["SCM_FEEDBACK"]['LEFT_BLINKER'] != 0
 #    ret.rightBlinker = cp.vl["SCM_FEEDBACK"]['RIGHT_BLINKER'] != 0
