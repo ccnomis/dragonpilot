@@ -612,10 +612,10 @@ EVENTS = {
     ET.NO_ENTRY: NoEntryAlert(_("Door open")),
   },
 
-#  EventName.seatbeltNotLatched: {
-#    ET.SOFT_DISABLE: SoftDisableAlert(_("Seatbelt Unlatched")),
-#    ET.NO_ENTRY: NoEntryAlert(_("Seatbelt unlatched")),
-#  },
+  EventName.seatbeltNotLatched: {
+    ET.SOFT_DISABLE: SoftDisableAlert(_("Seatbelt Unlatched")),
+    ET.NO_ENTRY: NoEntryAlert(_("Seatbelt unlatched")),
+  },
 
   EventName.espDisabled: {
     ET.SOFT_DISABLE: SoftDisableAlert(_("ESP Off")),
