@@ -31,8 +31,8 @@ def get_can_signals(CP):
       ("STEER_ANGLE_RATE", "STEERING_SENSORS", 0),
 #      ("MOTOR_TORQUE", "STEER_MOTOR_TORQUE", 0),
 #      ("STEER_TORQUE_SENSOR", "STEER_STATUS", 0),
-#      ("LEFT_BLINKER", "SCM_FEEDBACK", 0),
-#      ("RIGHT_BLINKER", "SCM_FEEDBACK", 0),
+      ("LEFT_BLINKER", "LIGHT2", 0),
+      ("RIGHT_BLINKER", "LIGHT2", 0),
 #      ("GEAR", "GEARBOX", 0),
     #  ("SEATBELT_DRIVER_LAMP", "SEATBELT_STATUS", 1),
       ("SEATBELT_DRIVER_LATCHED", "DOORS_STATUS", 0),
@@ -146,8 +146,8 @@ class CarState(CarStateBase):
     self.brake_switch = cp.vl["DOORS_STATUS"]['BRAKE_PRESSED'] != 0
 
 
-#    ret.leftBlinker = cp.vl["SCM_FEEDBACK"]['LEFT_BLINKER'] != 0
-#    ret.rightBlinker = cp.vl["SCM_FEEDBACK"]['RIGHT_BLINKER'] != 0
+    ret.leftBlinker = cp.vl["LIGHT2"]['LEFT_BLINKER'] != 0
+    ret.rightBlinker = cp.vl["LIGHT2"]['RIGHT_BLINKER'] != 0
 #    self.brake_hold = cp.vl["VSA_STATUS"]['BRAKE_HOLD_ACTIVE']
 
 
